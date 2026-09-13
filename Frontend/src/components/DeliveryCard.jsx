@@ -1,6 +1,6 @@
 import React from "react";
 
-const DeliveryCard = ({ delivery }) => {
+const DeliveryCard = ({ delivery,onComplete,onDelete }) => {
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
 
@@ -31,12 +31,16 @@ const DeliveryCard = ({ delivery }) => {
       <div className="flex gap-3 mt-6">
 
         {delivery.status === "pending" && (
-          <button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition">
+          <button 
+          onClick={()=>onComplete(delivery._id)}
+          className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition">
             Mark Complete
           </button>
         )}
 
-        <button className="bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm hover:bg-red-100 transition">
+        <button
+        onClick={()=>onDelete(delivery._id)}
+        className="bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm hover:bg-red-100 transition">
           Delete
         </button>
 
