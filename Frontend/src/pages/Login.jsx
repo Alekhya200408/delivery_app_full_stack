@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -22,14 +24,15 @@ const Login = () => {
             );
 
             console.log(response.data);
+            navigate("/dashboard");
 
-            const profile=await axios.get(
-                "http://localhost:3000/api/auth/profile",
-                {
-                    withCredentials:true,
-                }
-            );
-            console.log(profile.data);
+            // const profile=await axios.get(
+            //     "http://localhost:3000/api/auth/profile",
+            //     {
+            //         withCredentials:true,
+            //     }
+            // );
+            // console.log(profile.data);
             
             
         } catch (error) {
@@ -94,7 +97,9 @@ const Login = () => {
 
                 <p className="text-center text-sm text-slate-500 mt-6">
                     Don't have an account?{" "}
-                    <span className="text-blue-600 font-medium cursor-pointer">
+                    <span
+                    onClick={()=>navigate('/register')}
+                    className="text-blue-600 font-medium cursor-pointer">
                         Register
                     </span>
                 </p>

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const navigate=useNavigate()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -90,6 +92,7 @@ const Register = () => {
           </div>
 
           <button
+            onClick={()=>navigate('/login')}
             type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
           >
@@ -100,7 +103,9 @@ const Register = () => {
 
         <p className="text-center text-sm text-slate-500 mt-6">
           Already have an account?{" "}
-          <span className="text-blue-600 font-medium cursor-pointer">
+          <span
+          onClick={()=>navigate('/login')}
+          className="text-blue-600 font-medium cursor-pointer">
             Login
           </span>
         </p>
