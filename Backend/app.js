@@ -2,6 +2,7 @@ import express from 'express'
 import ConnDB from './db/db.js'
 import { config } from 'dotenv'
 import authRouter from './routes/user.routes.js'
+import deliveryRouter from './routes/delivery.routes.js'
 import cookieParser from 'cookie-parser'
 
 config()
@@ -14,6 +15,7 @@ app.use(cookieParser())
 app.use(express.urlencoded())
 
 app.use('/api/auth',authRouter)
+app.use('/api/deliveries',deliveryRouter)
 
 app.get('/',(req,res)=>{
     res.send("Hello World")
